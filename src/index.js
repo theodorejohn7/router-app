@@ -32,7 +32,6 @@ ReactDOM.render(
   <React.StrictMode>
 <BrowserRouter> 
 
-
     <App />
     
     </BrowserRouter>

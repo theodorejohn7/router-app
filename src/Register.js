@@ -9,46 +9,50 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useEffect, useState } from 'react';
-
-
+import { useEffect, useState } from "react";
 
 function Register() {
-
-  const initialValues = { username: "", password: "", firstname: "", lastname:"",email:"",address:"",state:"",pincode:"" };
+  const initialValues = {
+    username: "",
+    password: "",
+    firstname: "",
+    lastname: "",
+    email: "",
+    address: "",
+    state: "",
+    pincode: "",
+  };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
 
- let user_data={ user : "",
- pwd : ""};
+  // let user_data = { user: "", pwd: "" };
 
   const handleChange = (e) => {
     // console.log(e.target);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
     // console.log(formValues);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
-   
+    insertData(formValues);
     setIsSubmit(true);
-  }
+  };
 
   useEffect(() => {
     // console.log(formErrors);
     if (Object.keys(formErrors).length === 0 && isSubmit) {
-    //   console.log(formValues);
+      //   console.log(formValues);
     }
-
-  }, [formErrors])
+  }, [formErrors]);
 
   const validate = (values) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
-    const errors = {}
+    const errors = {};
     if (!values.firstname) {
       errors.firstname = "First Name is required";
     }
@@ -69,38 +73,27 @@ function Register() {
     if (!values.address) {
       errors.address = "Address is required";
     }
-    
+
     // console.log("length"+values.pincode.length);
     if (!values.pincode) {
       errors.pincode = "Pincode is required";
-    }else  if (values.pincode.length !== 6) {
+    } else if (values.pincode.length !== 6) {
       errors.pincode = "Enter six digits";
     }
 
-    // console.log("initial values");
-    // console.log(values.username);
-
-    let user_data={ user : "",
-    pwd : ""};
-
-    user_data.user=values.username;
-    user_data.pwd=values.password;
-
-    // console.log(user_data);
-    let a=JSON.parse((localStorage.getItem("all_users1")));
-    let b={...a, user_data};
-    // console.log(b);
-    localStorage.setItem('all_users1',JSON.stringify(b));
-
-
-    // localStorage.setItem(values.username,values.password);
-    // localStorage.setItem(values.username,values.password);
-
     return errors;
-  }
+  };
 
+  const insertData = (values) => {
+    let a = JSON.parse(localStorage.getItem("all_users1"));
+    if (a === null) {
+      a = [values];
+    } else {
+      a.push(values);
+    }
 
-
+    localStorage.setItem("all_users1", JSON.stringify(a));
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -114,7 +107,6 @@ function Register() {
           justifyContent: "center",
         }}
       >
-
         <Card
           variant="outlined"
           maxWidth="sm"
@@ -132,9 +124,7 @@ function Register() {
             m: 1,
           }}
         >
-
           <Box component="span" sx={{ p: 0, bgcolor: "info.main" }}>
-
             <Box
               sx={{
                 display: "flex",
@@ -145,8 +135,11 @@ function Register() {
                 borderRadius: 1,
               }}
             >
-
-              <Typography variant="h5" component="legend" sx={{ color: "white" }}>
+              <Typography
+                variant="h5"
+                component="legend"
+                sx={{ color: "white" }}
+              >
                 Registration Form
               </Typography>
             </Box>
@@ -162,7 +155,6 @@ function Register() {
                 borderRadius: 1,
               }}
             >
-
               <TextField
                 sx={{
                   borderRadius: 1,
@@ -175,9 +167,9 @@ function Register() {
                 name="firstname"
                 fullWidth
                 margin="dense"
-                 variant="filled"
-                 value={formValues.firstname}
-                 onChange={handleChange}
+                variant="filled"
+                value={formValues.firstname}
+                onChange={handleChange}
               />
 
               <TextField
@@ -192,12 +184,10 @@ function Register() {
                 name="lastname"
                 fullWidth
                 margin="dense"
-                 
                 variant="filled"
                 value={formValues.lastname}
                 onChange={handleChange}
               />
-
             </Box>
 
             <Box
@@ -214,27 +204,24 @@ function Register() {
                 borderRadius: 1,
               }}
             >
-            <span>{formErrors.firstname}</span>
+              <span>{formErrors.firstname}</span>
 
               <TextField
                 sx={{
                   borderRadius: 1,
                   boxShadow: 14,
                   bgcolor: "white",
-
-
                 }}
                 id="filled-basic"
                 label="User Name"
                 name="username"
                 fullWidth
                 margin="dense"
-               
                 variant="filled"
                 value={formValues.username}
                 onChange={handleChange}
               />
-            <span>{formErrors.username}</span>
+              <span>{formErrors.username}</span>
 
               <TextField
                 sx={{
@@ -243,7 +230,6 @@ function Register() {
                   borderRadius: 1,
                   color: "text.primary",
                 }}
-                
                 fullWidth
                 id="password-input"
                 label="Password"
@@ -255,7 +241,7 @@ function Register() {
                 value={formValues.password}
                 onChange={handleChange}
               />
-            <span>{formErrors.password}</span>
+              <span>{formErrors.password}</span>
 
               <TextField
                 sx={{
@@ -268,12 +254,11 @@ function Register() {
                 name="email"
                 fullWidth
                 margin="dense"
-                
                 variant="filled"
                 value={formValues.email}
                 onChange={handleChange}
               />
-            <span>{formErrors.email}</span>
+              <span>{formErrors.email}</span>
 
               <TextField
                 sx={{
@@ -286,13 +271,11 @@ function Register() {
                 name="address"
                 fullWidth
                 margin="dense"
-                 
                 variant="filled"
                 value={formValues.address}
                 onChange={handleChange}
               />
-            <span>{formErrors.address}</span>
-
+              <span>{formErrors.address}</span>
             </Box>
             <Box
               sx={{
@@ -334,7 +317,6 @@ function Register() {
                   onChange={handleChange}
                   label="Age"
                   name="state"
-                  
                 >
                   <MenuItem value="">
                     <em>None</em>
@@ -348,7 +330,6 @@ function Register() {
                   <MenuItem value={"up"}>Uttar Pradesh</MenuItem>
                 </Select>
               </FormControl>
-
 
               <TextField
                 sx={{
@@ -365,16 +346,18 @@ function Register() {
                 type="number"
                 fullWidth
                 margin="dense"
-                 
                 variant="filled"
                 value={formValues.pincode}
                 onChange={handleChange}
               />
-
             </Box>
 
-            <Typography variant="h7" component="legend" sx={{ color: "black" , textAlign: 'right'}}>
-            {formErrors.pincode}
+            <Typography
+              variant="h7"
+              component="legend"
+              sx={{ color: "black", textAlign: "right" }}
+            >
+              {formErrors.pincode}
             </Typography>
             {/* <span >{formErrors.pincode}</span> */}
 
@@ -389,12 +372,10 @@ function Register() {
                 borderRadius: 1,
               }}
             >
-
               <Button
                 variant="filled"
                 margin="dense"
-                type='submit'
-
+                type="submit"
                 sx={{
                   boxShadow: 20,
                   justifyContent: "center",
@@ -494,7 +475,7 @@ export default Register;
 //               borderRadius: 1,
 //             }}
 //           >
-        
+
 //                   <TextField
 //               sx={{
 //                 borderRadius: 1,
@@ -539,13 +520,12 @@ export default Register;
 //               borderRadius: 1,
 //             }}
 //           >
-//             <TextField  
+//             <TextField
 //               sx={{
 //                 borderRadius: 1,
 //                 boxShadow: 14,
 //                 bgcolor: "white",
-                
-                       
+
 //               }}
 //               id="filled-basic"
 //               label="User Name"

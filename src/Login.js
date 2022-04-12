@@ -6,11 +6,17 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 // import { useEffect, useState } from 'react';
 import React from "react";
+// import { Link, useNavigate, Redirect } from "react-router-dom";
+import Welcome from "./components/Welcome";
+import { useNavigate } from 'react-router';
+
 
 // const isEmpty = value => value.trim().length === '';
 // const isSixChars = value =>value.trim().length === 5;
 
 class Login extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,6 +32,16 @@ class Login extends React.Component {
     };
   }
 
+//   navigate = useNavigate();
+ 
+
+//   handleClick() {
+  
+//     navigate('/welcome');
+
+// }
+
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -37,11 +53,8 @@ class Login extends React.Component {
       // this.setState({ errors: { username: "error" } });
 
       this.state.errors.username = "Enter username";
-      // this.setState({ [this.state.errors] : {[this.state.errors.username]: "Enter username" }});
-      // console.log(this.state.errors);
     } else if (this.state.username.trim().length < 6) {
       this.state.errors.username = "Enter atleast 6 characters";
-      // this.setState({ username :  "Enter atleast 6 characters" });
     }
 
     if (this.state.username.trim().length > 0 && !this.state.password) {
@@ -49,28 +62,7 @@ class Login extends React.Component {
         "Hello " + this.state.username + " please enter Password";
     } else if (!this.state.password) {
       this.state.errors.password = "Enter password";
-    } else if (this.state.password !== "123") {
-      this.state.errors.password = "Enter correct password  ";
-    }
-    // console.log("Username");
-    // console.log(this.state.username);
-    // console.log((localStorage.getItem(this.state.username) ));
-
-    // console.log((localStorage.getItem(this.state.username).length ));
-
-
-    if (!(localStorage.getItem(this.state.username))) {
-        this.state.errors.username = "Invalid User Enter Correct User Name";
-    } else  if((this.state.password)===(localStorage.getItem(this.state.username)))
-    
-    {
-        console.log("valid user");
-
-        this.isLoggedIn = true;
-    }else{
-        this.state.errors.password="Wrong Password";
-        this.isLoggedIn = false;
-    }
+    } 
 
     // else if((this.state.password)===(localStorage.getItem(this.state.username)))
     // {
@@ -89,28 +81,36 @@ class Login extends React.Component {
     // console.log(this.state.errors.username);
   };
 
+  formAuthentication = () => {
+    let data = JSON.parse(localStorage.getItem("all_users1"));
+    const curr_data = data.find(
+      ({ username }) => username === this.state.username );
+    if((!curr_data))
+    {
+      this.state.errors.username="Username Not Registered";
+    }else 
+    if (this.state.password === curr_data.password) {
+      this.isLoggedIn=true;
+      // <Welcome />
+      // this.toComponentB();
+
+      // this.handleClick();
+      }
+
+    localStorage.setItem("all_users1", JSON.stringify(data));
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
-    // console.log("state => ");
-    // console.log(this.state.username);
-    // let name = this.state.username;
-    // // console.log(name);
-    // localStorage.setItem("currentloggedin", name);
-    // // let count = 1;
-
-    // this.state.login.name =this.state.username;
-    // this.state.login.pwd = this.state.password;
-
-    // localStorage.setItem(this.state.login.name,this.state.login.pwd);
-    // this.state.count+=1;
-
     this.formValidation();
+    this.formAuthentication();
   };
 
   render() {
     return this.isLoggedIn ? (
       <div>
-        <h1>Welcome {this.state.username}</h1>
+        <h1>Redirecting</h1>
+
       </div>
     ) : (
       <div>
