@@ -1,6 +1,9 @@
 // import './App.css';
 import * as React from "react";
 import Button from "@mui/material/Button";
+// import { useMedia } from 'react-media';
+
+// import Media from "react-media";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
@@ -53,32 +56,42 @@ function Register() {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
 
     const errors = {};
+    errors.iserror = false;
     if (!values.firstname) {
       errors.firstname = "First Name is required";
+      errors.iserror = true;
     }
     if (!values.lastname) {
       errors.lastname = "Last Name is required";
+      errors.iserror = true;
     }
     if (!values.username) {
       errors.username = "Username is required";
+      errors.iserror = true;
     }
     if (!values.password) {
       errors.password = "Password is required";
+      errors.iserror = true;
     }
     if (!values.email) {
       errors.email = "email is required";
+      errors.iserror = true;
     } else if (!regex.test(values.email)) {
       errors.email = "This is not a valid email format!";
+      errors.iserror = true;
     }
     if (!values.address) {
       errors.address = "Address is required";
+      errors.iserror = true;
     }
 
     // console.log("length"+values.pincode.length);
     if (!values.pincode) {
       errors.pincode = "Pincode is required";
+      errors.iserror = true;
     } else if (values.pincode.length !== 6) {
       errors.pincode = "Enter six digits";
+      errors.iserror = true;
     }
 
     return errors;
@@ -96,299 +109,302 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      {/* <pre>{JSON.stringify(formValues, undefined, 2)} </pre> */}
+    <div>
+      <form onSubmit={handleSubmit}>
+        {/* <pre>{JSON.stringify(formValues, undefined, 2)} </pre> */}
 
-      <div
-        className="App"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
-        <Card
-          variant="outlined"
-          maxWidth="sm"
-          sx={{
-            p: 1,
-            pt: 2,
-            bgcolor: "info.main",
+        <div
+          className="App"
+          style={{
             display: "flex",
-            boxShadow: 24,
             flexWrap: "wrap",
             justifyContent: "center",
-            maxWidth: 400,
-            borderRadius: 5,
-
-            m: 1,
           }}
         >
-          <Box component="span" sx={{ p: 0, bgcolor: "info.main" }}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                p: 1,
-                m: 1,
+          <Card
+            variant="outlined"
+            maxWidth="sm"
+            sx={{
+              p: 1,
+              pt: 2,
+              bgcolor: "info.main",
+              display: "flex",
+              boxShadow: 24,
+              flexWrap: "wrap",
+              justifyContent: "center",
+              maxWidth: 400,
+              borderRadius: 5,
 
-                borderRadius: 1,
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="legend"
-                sx={{ color: "white" }}
-              >
-                Registration Form
-              </Typography>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                p: 1,
-                gap: 1,
-                m: 1,
-                pb: 0,
-                mb: 0,
-                borderRadius: 1,
-              }}
-            >
-              <TextField
+              m: 1,
+            }}
+          >
+            <Box component="span" sx={{ p: 0, bgcolor: "info.main" }}>
+              <Box
                 sx={{
-                  borderRadius: 1,
-
-                  boxShadow: 14,
-                  bgcolor: "white",
-                }}
-                id="filled-basic"
-                label="First Name"
-                name="firstname"
-                fullWidth
-                margin="dense"
-                variant="filled"
-                value={formValues.firstname}
-                onChange={handleChange}
-              />
-
-              <TextField
-                sx={{
-                  borderRadius: 1,
-
-                  boxShadow: 14,
-                  bgcolor: "white",
-                }}
-                id="filled-basic"
-                label="Last Name"
-                name="lastname"
-                fullWidth
-                margin="dense"
-                variant="filled"
-                value={formValues.lastname}
-                onChange={handleChange}
-              />
-            </Box>
-
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                flexDirection: "column",
-
-                p: 1,
-                m: 1,
-                mb: 0,
-                mt: 0,
-                pt: 0,
-                borderRadius: 1,
-              }}
-            >
-              <span>{formErrors.firstname}</span>
-
-              <TextField
-                sx={{
-                  borderRadius: 1,
-                  boxShadow: 14,
-                  bgcolor: "white",
-                }}
-                id="filled-basic"
-                label="User Name"
-                name="username"
-                fullWidth
-                margin="dense"
-                variant="filled"
-                value={formValues.username}
-                onChange={handleChange}
-              />
-              <span>{formErrors.username}</span>
-
-              <TextField
-                sx={{
-                  bgcolor: "white",
-                  boxShadow: 14,
-                  borderRadius: 1,
-                  color: "text.primary",
-                }}
-                fullWidth
-                id="password-input"
-                label="Password"
-                name="password"
-                margin="dense"
-                variant="filled"
-                type="password"
-                autoComplete="current-password"
-                value={formValues.password}
-                onChange={handleChange}
-              />
-              <span>{formErrors.password}</span>
-
-              <TextField
-                sx={{
-                  borderRadius: 1,
-                  boxShadow: 14,
-                  bgcolor: "white",
-                }}
-                id="outlined-basic"
-                label="e-Mail ID"
-                name="email"
-                fullWidth
-                margin="dense"
-                variant="filled"
-                value={formValues.email}
-                onChange={handleChange}
-              />
-              <span>{formErrors.email}</span>
-
-              <TextField
-                sx={{
-                  borderRadius: 1,
-                  boxShadow: 14,
-                  bgcolor: "white",
-                }}
-                id="outlined-basic"
-                label="Address"
-                name="address"
-                fullWidth
-                margin="dense"
-                variant="filled"
-                value={formValues.address}
-                onChange={handleChange}
-              />
-              <span>{formErrors.address}</span>
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                p: 1,
-                gap: 1,
-                m: 1,
-                pt: 0,
-                mt: 0,
-                pb: 0,
-                mb: 0,
-                borderRadius: 1,
-              }}
-            >
-              <FormControl
-                variant="filled"
-                value={formValues.state}
-                onChange={handleChange}
-                sx={{
-                  minWidth: 120,
-                  bgcolor: "white",
-                  borderRadius: 1,
-                  p: 0,
+                  display: "flex",
+                  justifyContent: "center",
+                  p: 1,
                   m: 1,
-                  ml: 0,
-                  boxShadow: 14,
-                  mt: 0,
-                  mb: 2,
+
+                  borderRadius: 1,
                 }}
               >
-                <InputLabel id="demo-simple-select-standard-label">
-                  State
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
+                <Typography
+                  variant="h5"
+                  component="legend"
+                  sx={{ color: "white" }}
+                >
+                  Registration Form
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  p: 1,
+                  gap: 1,
+                  m: 1,
+                  pb: 0,
+                  mb: 0,
+                  borderRadius: 1,
+                }}
+              >
+                <TextField
+                  sx={{
+                    borderRadius: 1,
+
+                    boxShadow: 14,
+                    bgcolor: "white",
+                  }}
+                  id="filled-basic"
+                  label="First Name"
+                  name="firstname"
+                  fullWidth
+                  margin="dense"
+                  variant="filled"
+                  value={formValues.firstname}
+                  onChange={handleChange}
+                />
+
+                <TextField
+                  sx={{
+                    borderRadius: 1,
+
+                    boxShadow: 14,
+                    bgcolor: "white",
+                  }}
+                  id="filled-basic"
+                  label="Last Name"
+                  name="lastname"
+                  fullWidth
+                  margin="dense"
+                  variant="filled"
+                  value={formValues.lastname}
+                  onChange={handleChange}
+                />
+              </Box>
+
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+
+                  p: 1,
+                  m: 1,
+                  mb: 0,
+                  mt: 0,
+                  pt: 0,
+                  borderRadius: 1,
+                }}
+              >
+                <span>{formErrors.firstname}</span>
+
+                <TextField
+                  sx={{
+                    borderRadius: 1,
+                    boxShadow: 14,
+                    bgcolor: "white",
+                  }}
+                  id="filled-basic"
+                  label="User Name"
+                  name="username"
+                  fullWidth
+                  margin="dense"
+                  variant="filled"
+                  value={formValues.username}
+                  onChange={handleChange}
+                />
+                <span>{formErrors.username}</span>
+
+                <TextField
+                  sx={{
+                    bgcolor: "white",
+                    boxShadow: 14,
+                    borderRadius: 1,
+                    color: "text.primary",
+                  }}
+                  fullWidth
+                  id="password-input"
+                  label="Password"
+                  name="password"
+                  margin="dense"
+                  variant="filled"
+                  type="password"
+                  autoComplete="current-password"
+                  value={formValues.password}
+                  onChange={handleChange}
+                />
+                <span>{formErrors.password}</span>
+
+                <TextField
+                  sx={{
+                    borderRadius: 1,
+                    boxShadow: 14,
+                    bgcolor: "white",
+                  }}
+                  id="outlined-basic"
+                  label="e-Mail ID"
+                  name="email"
+                  fullWidth
+                  margin="dense"
+                  variant="filled"
+                  value={formValues.email}
+                  onChange={handleChange}
+                />
+                <span>{formErrors.email}</span>
+
+                <TextField
+                  sx={{
+                    borderRadius: 1,
+                    boxShadow: 14,
+                    bgcolor: "white",
+                  }}
+                  id="outlined-basic"
+                  label="Address"
+                  name="address"
+                  fullWidth
+                  margin="dense"
+                  variant="filled"
+                  value={formValues.address}
+                  onChange={handleChange}
+                />
+                <span>{formErrors.address}</span>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  p: 1,
+                  gap: 1,
+                  m: 1,
+                  pt: 0,
+                  mt: 0,
+                  pb: 0,
+                  mb: 0,
+                  borderRadius: 1,
+                }}
+              >
+                <FormControl
+                  variant="filled"
                   value={""}
                   onChange={handleChange}
-                  label="Age"
-                  name="state"
+                  sx={{
+                    minWidth: 120,
+                    bgcolor: "white",
+                    borderRadius: 1,
+                    p: 0,
+                    m: 1,
+                    ml: 0,
+                    boxShadow: 14,
+                    mt: 0,
+                    mb: 2,
+                  }}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={"ap"}>Andhra Pradesh</MenuItem>
-                  <MenuItem value={"delhi"}>Delhi</MenuItem>
-                  <MenuItem value={"karnataka"}>Karnataka</MenuItem>
-                  <MenuItem value={"kerala"}>Kerala</MenuItem>
-                  <MenuItem value={"mumbai"}>Mumbai</MenuItem>
-                  <MenuItem value={"tamilnadu"}>TamilNadu</MenuItem>
-                  <MenuItem value={"up"}>Uttar Pradesh</MenuItem>
-                </Select>
-              </FormControl>
+                  <InputLabel id="demo-simple-select-standard-label">
+                    State
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={formValues.state}
+                    onChange={handleChange}
+                    label="State"
+                    name="state"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={"ap"}>Andhra Pradesh</MenuItem>
+                    <MenuItem value={"delhi"}>Delhi</MenuItem>
+                    <MenuItem value={"karnataka"}>Karnataka</MenuItem>
+                    <MenuItem value={"kerala"}>Kerala</MenuItem>
+                    <MenuItem value={"mumbai"}>Mumbai</MenuItem>
+                    <MenuItem value={"tamilnadu"}>TamilNadu</MenuItem>
+                    <MenuItem value={"up"}>Uttar Pradesh</MenuItem>
+                  </Select>
+                </FormControl>
 
-              <TextField
+                <TextField
+                  sx={{
+                    borderRadius: 1,
+                    boxShadow: 14,
+                    bgcolor: "white",
+                    m: 1,
+                    mt: 0,
+                    mb: 2,
+                  }}
+                  id="basic"
+                  label="Pincode"
+                  name="pincode"
+                  type="number"
+                  fullWidth
+                  margin="dense"
+                  variant="filled"
+                  value={formValues.pincode}
+                  onChange={handleChange}
+                />
+              </Box>
+
+              <Typography
+                variant="h7"
+                component="legend"
+                sx={{ color: "black", textAlign: "right" }}
+              >
+                {formErrors.pincode}
+              </Typography>
+              {/* <span >{formErrors.pincode}</span> */}
+
+              {/* //Register Button */}
+              <Box
                 sx={{
-                  borderRadius: 1,
-                  boxShadow: 14,
-                  bgcolor: "white",
-                  m: 1,
-                  mt: 0,
-                  mb: 2,
-                }}
-                id="basic"
-                label="Pincode"
-                name="pincode"
-                type="number"
-                fullWidth
-                margin="dense"
-                variant="filled"
-                value={formValues.pincode}
-                onChange={handleChange}
-              />
-            </Box>
-
-            <Typography
-              variant="h7"
-              component="legend"
-              sx={{ color: "black", textAlign: "right" }}
-            >
-              {formErrors.pincode}
-            </Typography>
-            {/* <span >{formErrors.pincode}</span> */}
-
-            {/* //Register Button */}
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                p: 1,
-                m: 1,
-
-                borderRadius: 1,
-              }}
-            >
-              <Button
-                variant="filled"
-                margin="dense"
-                type="submit"
-                sx={{
-                  boxShadow: 20,
+                  display: "flex",
                   justifyContent: "center",
-                  bgcolor: "success.main",
+                  p: 1,
+                  m: 1,
+
+                  borderRadius: 1,
                 }}
               >
-                Register
-              </Button>
+                <Button
+                  variant="filled"
+                  margin="dense"
+                  type="submit"
+                  sx={{
+                    boxShadow: 20,
+                    justifyContent: "center",
+                    bgcolor: "success.main",
+                  }}
+                >
+                  Register
+                </Button>
+              </Box>
             </Box>
-          </Box>
-        </Card>
-      </div>
-    </form>
+          </Card>
+          
+        </div>
+      </form>
+    </div>
   );
 }
 
