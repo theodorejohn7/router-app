@@ -44,6 +44,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react": "^7.29.4"
+    "eslint-plugin-react": "^7.29.4",
+    "sonarqube-scanner": "^2.8.1"
   }
 }
