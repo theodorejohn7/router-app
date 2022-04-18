@@ -1,9 +1,6 @@
-// import './App.css';
 import * as React from "react";
 import Button from "@mui/material/Button";
-// import { useMedia } from 'react-media';
 
-// import Media from "react-media";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
@@ -12,7 +9,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { useEffect, useState } from "react";
+// import { useEffect  } from "react";
+import {  useState } from "react";
 
 function Register() {
   const initialValues = {
@@ -27,30 +25,26 @@ function Register() {
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
 
-  // let user_data = { user: "", pwd: "" };
 
   const handleChange = (e) => {
-    // console.log(e.target);
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-    // console.log(formValues);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErrors(validate(formValues));
     insertData(formValues);
-    setIsSubmit(true);
+    // setIsSubmit(true);
   };
 
-  useEffect(() => {
-    // console.log(formErrors);
-    if (Object.keys(formErrors).length === 0 && isSubmit) {
-      //   console.log(formValues);
-    }
-  }, [formErrors]);
+  // useEffect(() => {
+  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
+ 
+  //   }
+  // }, [formErrors]);
 
   const validate = (values) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -85,7 +79,6 @@ function Register() {
       errors.iserror = true;
     }
 
-    // console.log("length"+values.pincode.length);
     if (!values.pincode) {
       errors.pincode = "Pincode is required";
       errors.iserror = true;
@@ -111,7 +104,6 @@ function Register() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* <pre>{JSON.stringify(formValues, undefined, 2)} </pre> */}
 
         <div
           className="App"
@@ -373,9 +365,7 @@ function Register() {
               >
                 {formErrors.pincode}
               </Typography>
-              {/* <span >{formErrors.pincode}</span> */}
 
-              {/* //Register Button */}
               <Box
                 sx={{
                   display: "flex",
