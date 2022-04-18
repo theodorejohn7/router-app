@@ -2,15 +2,13 @@ import { useRef } from 'react';
 
 import classes from './NewCommentForm.module.css';
 
-const NewCommentForm = (props) => {
+const NewCommentForm = (_props) => {
   const commentTextRef = useRef();
 
   const submitFormHandler = (event) => {
     event.preventDefault();
 
-    // optional: Could validate here
-
-    // send comment to server
+ 
   };
 
   return (
