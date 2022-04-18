@@ -12,7 +12,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const Welcome = (props) => {
-
   const location = useLocation(props);
   let data = JSON.parse(localStorage.getItem("all_users1"));
 
@@ -20,13 +19,9 @@ const Welcome = (props) => {
     ({ username }) => username === location.state.name
   );
 
-  console.log("use location => /*/*/ ", curr_data);
-
   return (
     <div>
       <div>
-        <h3>Welcome {location.state.name} below are your account details</h3>
-
         <Media
           queries={{
             medium: "(min-width: 300px) and (max-width: 700px)",
@@ -37,12 +32,15 @@ const Welcome = (props) => {
             <React.Fragment>
               {matches.medium && (
                 <TableContainer component={Paper}>
+                  <h3>
+                    Welcome {location.state.name} below are your account details
+                  </h3>
+
                   <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                       <TableRow>
                         <TableCell>Parameter</TableCell>
                         <TableCell align="left">Values</TableCell>
-
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -58,21 +56,6 @@ const Welcome = (props) => {
 
                         <TableCell align="left">
                           {curr_data.username}{" "}
-                        </TableCell>
-                      </TableRow>
-
-                      <TableRow
-                        key="key"
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell component="th" scope="row">
-                          FirstName
-                        </TableCell>
-
-                        <TableCell align="left">
-                          {curr_data.firstname}{" "}
                         </TableCell>
                       </TableRow>
 
@@ -114,9 +97,7 @@ const Welcome = (props) => {
                           e-Mail ID
                         </TableCell>
 
-                        <TableCell align="left">
-                          {curr_data.email}{" "}
-                        </TableCell>
+                        <TableCell align="left">{curr_data.email} </TableCell>
                       </TableRow>
                       <TableRow
                         key="key"
@@ -128,9 +109,7 @@ const Welcome = (props) => {
                           Address
                         </TableCell>
 
-                        <TableCell align="left">
-                          {curr_data.address}{" "}
-                        </TableCell>
+                        <TableCell align="left">{curr_data.address} </TableCell>
                       </TableRow>
                       <TableRow
                         key="key"
@@ -142,11 +121,8 @@ const Welcome = (props) => {
                           Pincode
                         </TableCell>
 
-                        <TableCell align="left">
-                          {curr_data.pincode}{" "}
-                        </TableCell>
+                        <TableCell align="left">{curr_data.pincode} </TableCell>
                       </TableRow>
-
                     </TableBody>
                   </Table>
                 </TableContainer>
@@ -154,6 +130,10 @@ const Welcome = (props) => {
 
               {matches.large && (
                 <div>
+                  <h3>
+                    Welcome {location.state.name} below are your account details
+                  </h3>
+
                   <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                       <TableHead>
@@ -196,16 +176,59 @@ const Welcome = (props) => {
                       </TableBody>
                     </Table>
                   </TableContainer>
+                  <div>
+                    <h1>List of all users content </h1>
+
+                    <TableContainer component={Paper}>
+                      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>Username</TableCell>
+                            <TableCell align="right">Firstname</TableCell>
+                            <TableCell align="right">Last Name</TableCell>
+                            <TableCell align="right">e-mail ID</TableCell>
+                            <TableCell align="right">Address</TableCell>
+                            <TableCell align="right">State</TableCell>
+                            <TableCell align="right">Pincode</TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {data.map((row) => (
+                            <TableRow
+                              key={row.name}
+                              sx={{
+                                "&:last-child td, &:last-child th": {
+                                  border: 0,
+                                },
+                              }}
+                            >
+                              <TableCell component="th" scope="row">
+                                {row.username}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.firstname}
+                              </TableCell>
+                              <TableCell align="right">
+                                {row.lastname}
+                              </TableCell>
+                              <TableCell align="right">{row.email}</TableCell>
+                              <TableCell align="right">{row.address}</TableCell>
+                              <TableCell align="right">{row.state}</TableCell>
+                              <TableCell align="right">{row.pincode}</TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </div>
                 </div>
               )}
             </React.Fragment>
           )}
         </Media>
       </div>
-
     </div>
   );
 };
 
 export default Welcome;
-
