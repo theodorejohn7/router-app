@@ -9,7 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import {  useState } from "react";
+import { useState } from "react";
 
 function Register() {
   const initialValues = {
@@ -25,7 +25,6 @@ function Register() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
@@ -36,7 +35,6 @@ function Register() {
     setFormErrors(validate(formValues));
     insertData(formValues);
   };
-
 
   const validate = (values) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -96,7 +94,6 @@ function Register() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-
         <div
           className="App"
           style={{
@@ -383,7 +380,6 @@ function Register() {
               </Box>
             </Box>
           </Card>
-          
         </div>
       </form>
     </div>
@@ -391,4 +387,3 @@ function Register() {
 }
 
 export default Register;
- 

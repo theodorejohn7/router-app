@@ -3,8 +3,8 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import {   useState } from "react";
-import Welcome from "./components/Welcome";
+import { useState } from "react";
+import Welcome from "./Welcome";
 import { useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
 
@@ -36,7 +36,6 @@ function Login() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
-
   };
 
   const handleSubmit = (e) => {
@@ -46,58 +45,52 @@ function Login() {
       setFormErrors(formAuthentication(formValues));
     }
   };
- 
 
   const validate = (values) => {
-    console.log("inside validation");
     const errors = {};
     errors.isError = false;
     if (!values.username) {
       errors.username = "Username is required";
       errors.isError = true;
+      errors.isPopup = true;
+      handleOpen();
     }
     if (!values.password) {
       errors.password = "Password is required";
       errors.isError = true;
-     errors.isPopup = true;
-     handleOpen(); 
+      errors.isPopup = true;
+      handleOpen();
     }
 
-    console.log("errors =>/*/*/*   ", errors);
     return errors;
   };
 
   const formAuthentication = (values) => {
     let data = JSON.parse(localStorage.getItem("all_users1"));
-    console.log("data", data);
     const errors = {};
 
     const curr_data = data.find(({ username }) => username === values.username);
 
-    console.log("curr_data => ", curr_data);
-    console.log("curr_data.password", curr_data.password);
-    console.log("values.password", values.password);
-
     if (!curr_data) {
-      console.log("userename not registered");
       errors.username = "Username Not Registered";
+      errors.isError = true;
+      errors.isPopup = true;
+      handleOpen();
     } else if (values.password === curr_data.password) {
-      console.log("password matched");
-
       navigate("/welcome", { state: { name: values.username } });
       <Welcome />;
-
     } else {
-      errors.password = "invalid";
+      errors.password = "Invalid Password Try correct password";
+      errors.isError = true;
+      errors.isPopup = true;
+      handleOpen();
     }
 
     localStorage.setItem("all_users1", JSON.stringify(data));
     return errors;
   };
-console.log("errors===>   ",formErrors);
-  // let test=2;
-  return (
 
+  return (
     <form onSubmit={handleSubmit}>
       <div
         className="App"
@@ -107,7 +100,6 @@ console.log("errors===>   ",formErrors);
           justifyContent: "center",
         }}
       >
-
         <Card
           variant="outlined"
           maxWidth="sm"
@@ -179,7 +171,6 @@ console.log("errors===>   ",formErrors);
               autoComplete="current-password"
             />
 
-            <span>{formErrors.password}</span>
             <Box
               sx={{
                 display: "flex",
@@ -206,31 +197,31 @@ console.log("errors===>   ",formErrors);
           </Box>
         </Card>
       </div>
-      {(formErrors.isPopup)?
-       <div>  
-    
-      <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h2">
-Please check on below        </Typography>
-        <Typography id="modal-modal-description" sx={{ mt: 2, ml:5 }}>
-        {formErrors.username}<br></br>
-  {formErrors.password}
-
-        </Typography>
-      </Box>
-    </Modal>
-    </div>
-      :" " }
-      
+      {formErrors.isPopup ? (
+        <div>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                Please check on below{" "}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2, ml: 5 }}>
+                {formErrors.username}
+                <br />
+                {formErrors.password}
+              </Typography>
+            </Box>
+          </Modal>
+        </div>
+      ) : (
+        " "
+      )}
     </form>
   );
 }
 
 export default Login;
-
