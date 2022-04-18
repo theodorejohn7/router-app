@@ -46,9 +46,6 @@ function Login() {
       setFormErrors(formAuthentication(formValues));
     }
   };
-
-  useEffect(() => {
-  }, [formErrors]);
  
 
   const validate = (values) => {

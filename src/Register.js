@@ -9,7 +9,6 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-// import { useEffect  } from "react";
 import {  useState } from "react";
 
 function Register() {
@@ -25,7 +24,6 @@ function Register() {
   };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
 
 
   const handleChange = (e) => {
@@ -37,14 +35,8 @@ function Register() {
     e.preventDefault();
     setFormErrors(validate(formValues));
     insertData(formValues);
-    // setIsSubmit(true);
   };
 
-  // useEffect(() => {
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
- 
-  //   }
-  // }, [formErrors]);
 
   const validate = (values) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
