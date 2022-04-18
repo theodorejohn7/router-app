@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import { useEffect, useState } from "react";
+import {   useState } from "react";
 import Welcome from "./components/Welcome";
 import { useNavigate } from "react-router-dom";
 import Modal from "@mui/material/Modal";
