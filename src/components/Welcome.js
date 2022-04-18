@@ -1,19 +1,8 @@
 import * as React from "react";
 import Media from "react-media";
 
-// console.log("props" + this.props.log);
-// import Login from '../Login';
-// import { useEffect } from 'react';
 import { useLocation } from "react-router-dom";
-// import Button from "@mui/material/Button";
-// import Box from "@mui/material/Box";
-// import TextField from "@mui/material/TextField";
-// import Card from "@mui/material/Card";
-// import Typography from "@mui/material/Typography";
-// import InputLabel from "@mui/material/InputLabel";
-// import MenuItem from "@mui/material/MenuItem";
-// import FormControl from "@mui/material/FormControl";
-// import Select from "@mui/material/Select";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -23,9 +12,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const Welcome = (props) => {
-  // console.log(this.props.location.names);
-
-  //  console.log();
 
   const location = useLocation(props);
   let data = JSON.parse(localStorage.getItem("all_users1"));
@@ -57,11 +43,6 @@ const Welcome = (props) => {
                         <TableCell>Parameter</TableCell>
                         <TableCell align="left">Values</TableCell>
 
-                        {/* <TableCell align="right">LastName</TableCell>
-                              <TableCell align="right">e-mail Id</TableCell>
-                              <TableCell align="right">Address</TableCell>
-                              <TableCell align="right">State</TableCell>
-                              <TableCell align="right">Pincode</TableCell> */}
                       </TableRow>
                     </TableHead>
                     <TableBody>
@@ -222,25 +203,9 @@ const Welcome = (props) => {
         </Media>
       </div>
 
-      {/* <p>{props.username.location.state.names} </p> */}
     </div>
   );
 };
 
 export default Welcome;
 
-// function Welcome(props) {
-
-//     console.log(props);
-
-//     return (
-//        <div>
-//      <h1 > The Welcome Page</h1>
-//      {/* <h1>Welcome {this.state.username}</h1> */}
-
-//        </div>
-
-//     );
-//   }
-
-// export default Welcome;
