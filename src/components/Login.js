@@ -11,7 +11,7 @@ import Modal from "@mui/material/Modal";
 import * as React from "react";
 
 function Login() {
-  const initialValues = { username: "", password: "" };
+  const initialValues = { username: "", pwd: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
 
@@ -55,8 +55,8 @@ function Login() {
       errors.isPopup = true;
       handleOpen();
     }
-    if (!values.password) {
-      errors.password = "Password is required";
+    if (!values.pwd) {
+      errors.pwd = "Password is required";
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
@@ -76,11 +76,11 @@ function Login() {
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
-    } else if (values.password === curr_data.password) {
+    } else if (values.pwd === curr_data.pwd) {
       navigate("/welcome", { state: { name: values.username } });
       <Welcome />;
     } else {
-      errors.password = "Invalid Password Try correct password";
+      errors.pwd = "Invalid Password Try correct password";
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
@@ -159,16 +159,16 @@ function Login() {
 
                 color: "text.primary",
               }}
-              name="password"
+              name="pwd"
               fullWidth
-              id="password-input"
+              id="pwd-input"
               label="Password"
               margin="dense"
               variant="filled"
               type="password"
-              value={formValues.password}
+              value={formValues.pwd}
               onChange={handleChange}
-              autoComplete="current-password"
+              autoComplete="current-pwd"
             />
 
             <Box
@@ -212,7 +212,7 @@ function Login() {
               <Typography id="modal-modal-description" sx={{ mt: 2, ml: 5 }}>
                 {formErrors.username}
                 <br />
-                {formErrors.password}
+                {formErrors.pwd}
               </Typography>
             </Box>
           </Modal>

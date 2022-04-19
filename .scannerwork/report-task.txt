@@ -2,5 +2,5 @@ projectKey=router-app
 serverUrl=http://localhost:9000
 serverVersion=9.4.0.54424
 dashboardUrl=http://localhost:9000/dashboard?id=router-app
-ceTaskId=AYA7tLFtuSwd5lT5Ehpm
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AYA7tLFtuSwd5lT5Ehpm
+ceTaskId=AYBANrxpa1r5FcxZ44Ah
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYBANrxpa1r5FcxZ44Ah
