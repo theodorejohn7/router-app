@@ -17,6 +17,16 @@ const MainHeader = () => {
           </li>
          
 
+          <li>
+            <NavLink  activeClassName={classes.active}  to="/todoapp">TodoApp </NavLink>
+          </li>
+
+
+          <li>
+            <NavLink  activeClassName={classes.active}  to="/test">Test </NavLink>
+          </li>
+
+
         </ul>
       </nav>
     </header>
