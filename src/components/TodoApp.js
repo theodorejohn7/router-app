@@ -60,7 +60,6 @@ export default function TodoApp() {
   }
 
   console.log(todos);
-  /* eslint-disable */
 
   return (
     <>

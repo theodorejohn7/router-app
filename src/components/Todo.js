@@ -3,8 +3,8 @@ import { ACTION } from "./TodoApp";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import SnoozeIcon from "@mui/icons-material/Snooze";
-
-/* eslint-disable */
+ 
+ 
 function Todo({ todo, dispatch }) {
   return (
     <div>
