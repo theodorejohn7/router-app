@@ -15,7 +15,6 @@ function FunctionalContextComponent() {
     width:"15rem",
     textAlign:"center",
   
-
 };
 
   return <div style={darkStyle}>Functional Component</div>;
