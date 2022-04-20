@@ -69,7 +69,11 @@ function Login() {
     let data = JSON.parse(localStorage.getItem("all_users1"));
     const errors = {};
 
+    
+
     const curr_data = data.find(({ username }) => username === values.username);
+console.log("Curr data",values.pwd);
+console.log("Curr data",curr_data);
 
     if (!curr_data) {
       errors.username = "Username Not Registered";
@@ -77,6 +81,8 @@ function Login() {
       errors.isPopup = true;
       handleOpen();
     } else if (values.pwd === curr_data.pwd) {
+    console.log("password correcr");
+
       navigate("/welcome", { state: { name: values.username } });
       <Welcome />;
     } else {

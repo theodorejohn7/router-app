@@ -14,7 +14,7 @@ import { useState } from "react";
 function Register() {
   const initialValues = {
     username: "",
-    password: "",
+    pwd: "",
     firstname: "",
     lastname: "",
     email: "",
@@ -53,8 +53,8 @@ function Register() {
       errors.username = "Username is required";
       errors.iserror = true;
     }
-    if (!values.password) {
-      errors.password = "Password is required";
+    if (!values.pwd) {
+      errors.pwd = "Password is required";
       errors.iserror = true;
     }
     if (!values.email) {
@@ -226,17 +226,17 @@ function Register() {
                     color: "text.primary",
                   }}
                   fullWidth
-                  id="password-input"
+                  id="pwd-input"
                   label="Password"
-                  name="password"
+                  name="pwd"
                   margin="dense"
                   variant="filled"
                   type="password"
                   autoComplete="current-password"
-                  value={formValues.password}
+                  value={formValues.pwd}
                   onChange={handleChange}
                 />
-                <span>{formErrors.password}</span>
+                <span>{formErrors.pwd}</span>
 
                 <TextField
                   sx={{

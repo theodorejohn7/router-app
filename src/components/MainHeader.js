@@ -21,9 +21,16 @@ const MainHeader = () => {
             <NavLink  activeClassName={classes.active}  to="/todoapp">TodoApp </NavLink>
           </li>
 
+          <li>
+            <NavLink  activeClassName={classes.active}  to="/usecontextapp">useContextApp </NavLink>
+          </li>
 
           <li>
-            <NavLink  activeClassName={classes.active}  to="/test">Test </NavLink>
+            <NavLink  activeClassName={classes.active}  to="/usecontextapp2">useContextApp_2 </NavLink>
+          </li>
+
+          <li>
+            <NavLink  activeClassName={classes.active}  to="/test">Counter </NavLink>
           </li>
 
 
