@@ -9,7 +9,7 @@ import Test from "./components/test";
 import TodoApp from "./components/TodoApp";
 import UseContextApp from "./components/UseContextApp";
 import UseContextApp2 from "./components/UseContextApp2";
-
+import ApiApp from "./components/ApiApp";
 
 export default class App extends React.Component {
   render() {
@@ -29,6 +29,8 @@ export default class App extends React.Component {
             <Route path="/todoapp" element={<TodoApp />} />
             <Route path="/usecontextapp" element={<UseContextApp />} />
             <Route path="/usecontextapp2" element={<UseContextApp2 />} />
+            <Route path="/usereducerapi" element={<ApiApp />} />
+
           
           </Routes>
        

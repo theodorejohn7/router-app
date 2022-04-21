@@ -30,6 +30,10 @@ const MainHeader = () => {
           </li>
 
           <li>
+            <NavLink  activeClassName={classes.active}  to="/usereducerapi">useReducer </NavLink>
+          </li>
+
+          <li>
             <NavLink  activeClassName={classes.active}  to="/test">Counter </NavLink>
           </li>
 

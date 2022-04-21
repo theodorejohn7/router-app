@@ -110,7 +110,7 @@ export default function TodoApp() {
                   width: 600,
                 }}
                 id="filled-basic"
-                label="Key in your Todo activity"
+                label="Key-in your Todo activity"
                 variant="filled"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -118,7 +118,7 @@ export default function TodoApp() {
             </Paper>
 
             {todos.map((todo) => (
-              <Paper elevation={3}>
+              <Paper key={todo} elevation={3}>
 
                 <Todo dispatch={dispatch} todo={todo} />
               </Paper>
