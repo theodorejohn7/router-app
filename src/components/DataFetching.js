@@ -30,22 +30,18 @@ LinearProgressWithLabel.propTypes = {
 };
 
 const initialState = {
-    begin: true,
+  begin: true,
   movies: [],
   isLoading: false,
   error: null,
   final: null,
 };
 const reducer = (state, action) => {
-  console.log("action data", action.payload);
-
   switch (action.type) {
-     
-
     case "FETCH_SUCCESS":
       return {
         begin: false,
-          
+
         isLoading: false,
         movies: action.payload,
         error: null,
@@ -96,7 +92,7 @@ function DataFetching() {
   }, []);
 
   const [state, dispatch] = useReducer(reducer, initialState);
- 
+
   async function fetchMoviesHandler() {
     let response;
 
@@ -118,7 +114,6 @@ function DataFetching() {
     }
   }
 
-  console.log("error ", !state.error);
   return (
     <React.Fragment>
       <section>
@@ -126,7 +121,7 @@ function DataFetching() {
       </section>
       <section className={classes.parent}>
         {state.begin && <h2>Welcome</h2>}
-        
+
         {state.isLoading && (
           <Box sx={{ width: "100%" }}>
             <LinearProgressWithLabel value={progress} />
