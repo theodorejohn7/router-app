@@ -33,8 +33,14 @@ const MainHeader = () => {
           </li>
 
           <li>
+            <NavLink  activeClassName={classes.active}  to="/hocapp">HOC App</NavLink>
+          </li>
+
+
+          <li>
             <NavLink  activeClassName={classes.active}  to="/test">Counter </NavLink>
           </li>
+
 
 
         </ul>
