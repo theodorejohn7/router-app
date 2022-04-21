@@ -36,7 +36,7 @@ const initialState = {
   error: null,
   final: null,
 };
-const reducer = (state, action) => {
+const reducer = (_state, action) => {
   switch (action.type) {
     case "FETCH_SUCCESS":
       return {

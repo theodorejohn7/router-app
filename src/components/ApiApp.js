@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import MoviesList from "./MoviesList";
+import MoviesList from "./MovieList";
 import "./ApiApp.css";
 
 function ApiApp() {
@@ -32,8 +32,8 @@ function ApiApp() {
       });
       setMovies(transformedMovies);
       setIsLoading(false);
-    } catch (error) {
-      setError(error.message);
+    } catch (errors) {
+      setError(errors.message);
     } finally {
       setFinal("Finally we are here");
       setIsLoading(false);
