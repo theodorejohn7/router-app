@@ -8,6 +8,14 @@ section {
   border-radius: 12px;
 }
 
+
+
+.parent{
+  border:white 2px solid;
+  display:inline;
+  }
+  
+
 button {
   font: inherit;
   cursor: pointer;
