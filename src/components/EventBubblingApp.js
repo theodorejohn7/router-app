@@ -6,7 +6,7 @@ function EventBubblingApp() {
     function outerHandle() { 
       
       console.log('outer') 
-      
+       
     } 
     
     function innerHandle() { 
