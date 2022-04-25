@@ -13,7 +13,7 @@ import ApiApp from "./components/ApiApp";
 import DataFetching from "./components/DataFetching";
 import HOCApp from "./components/HOCApp";
 import EventApp from "./components/EventApp";
- import FileUploadApp from "./components/FileUpload";
+ import FileUploadApp from "./components/FileUploadApp";
 
 
 export default class App extends React.Component {

@@ -8,10 +8,10 @@ class EventApp extends React.Component {
   render() {
     return (
       <>
-        <h1>Event Bubbling App</h1>
+        <h1>Event Bubbling </h1>
         <EventBubblingApp />
 
-        <h1>Event Capture App</h1>
+        <h1>Event Capture </h1>
         <EventCapturingApp />
 
         <h1>Multiple Child</h1>
