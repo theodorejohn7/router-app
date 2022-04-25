@@ -12,6 +12,8 @@ import UseContextApp2 from "./components/UseContextApp2";
 import ApiApp from "./components/ApiApp";
 import DataFetching from "./components/DataFetching";
 import HOCApp from "./components/HOCApp";
+import EventApp from "./components/EventApp";
+
 
 export default class App extends React.Component {
   render() {
@@ -34,6 +36,7 @@ export default class App extends React.Component {
             <Route path="/usereducerapi" element={<ApiApp />} />
             <Route path="/datafetching" element={<DataFetching />} />
             <Route path="/hocapp" element={<HOCApp />} />
+            <Route path="/eventbubblingapp" element={<EventApp />} />
 
           
           </Routes>

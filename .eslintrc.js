@@ -1,24 +1,22 @@
-{
+module.exports = {
     "env": {
         "browser": true,
+        "commonjs": true,
         "es2021": true
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "plugin:prettier/recommended"
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest",
-        "sourceType": "module"
+        "ecmaVersion": "latest"
     },
     "plugins": [
         "react"
     ],
     "rules": {
-        "react/react-in-jsx-scope": "off"
     }
 }

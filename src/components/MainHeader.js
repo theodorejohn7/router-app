@@ -1,7 +1,6 @@
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classes from './MainHeader.module.css';
-import React from "react";
-
+import React from 'react';
 
 const MainHeader = () => {
   return (
@@ -9,40 +8,51 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-          <NavLink activeClassName={classes.active} to="/login">Login </NavLink>
-            
+            <NavLink activeClassName={classes.active} to="/login">
+              Login{' '}
+            </NavLink>
           </li>
           <li>
-            <NavLink  activeClassName={classes.active}  to="/register">Register </NavLink>
-          </li>
-         
-
-          <li>
-            <NavLink  activeClassName={classes.active}  to="/todoapp">TodoApp </NavLink>
+            <NavLink activeClassName={classes.active} to="/register">
+              Register{' '}
+            </NavLink>
           </li>
 
           <li>
-            <NavLink  activeClassName={classes.active}  to="/usecontextapp">Toogle Color </NavLink>
-          </li>
-
-       
-
-          
-          <li>
-            <NavLink  activeClassName={classes.active}  to="/datafetching">Data Fetching </NavLink>
+            <NavLink activeClassName={classes.active} to="/todoapp">
+              TodoApp{' '}
+            </NavLink>
           </li>
 
           <li>
-            <NavLink  activeClassName={classes.active}  to="/hocapp">HOC App</NavLink>
+            <NavLink activeClassName={classes.active} to="/usecontextapp">
+              Toogle Color{' '}
+            </NavLink>
           </li>
-
 
           <li>
-            <NavLink  activeClassName={classes.active}  to="/test">Counter </NavLink>
+            <NavLink activeClassName={classes.active} to="/datafetching">
+              Data Fetching{' '}
+            </NavLink>
           </li>
 
+          <li>
+            <NavLink activeClassName={classes.active} to="/hocapp">
+              HOC App
+            </NavLink>
+          </li>
 
+          <li>
+            <NavLink activeClassName={classes.active} to="/eventbubblingapp">
+              Event App
+            </NavLink>
+          </li>
 
+          <li>
+            <NavLink activeClassName={classes.active} to="/test">
+              Counter{' '}
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

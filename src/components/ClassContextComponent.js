@@ -1,19 +1,18 @@
-
-import React, { Component } from "react";
-import { ThemeContext } from "./UseContextApp";
+import React, { Component } from 'react';
+import { ThemeContext } from './UseContextApp';
 
 export default class ClassContextComponent extends Component {
   themeStyles(dark) {
     return {
-    backgroundColor: dark  ? "brown" : "lightBlue",
-    color: !dark  ? "#333" : "#ccc",
-    padding: "2em",
-    margin: "2rem",
-    borderRadius:"0.5rem",
-    height:"2rem",
-    width:"15rem",
-    textAlign:"center"  
-};
+      backgroundColor: dark ? 'brown' : 'lightBlue',
+      color: !dark ? '#333' : '#ccc',
+      padding: '2em',
+      margin: '2rem',
+      borderRadius: '0.5rem',
+      height: '2rem',
+      width: '15rem',
+      textAlign: 'center'
+    };
   }
 
   render() {
