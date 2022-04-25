@@ -13,6 +13,7 @@ import ApiApp from "./components/ApiApp";
 import DataFetching from "./components/DataFetching";
 import HOCApp from "./components/HOCApp";
 import EventApp from "./components/EventApp";
+ import FileUploadApp from "./components/FileUpload";
 
 
 export default class App extends React.Component {
@@ -37,7 +38,9 @@ export default class App extends React.Component {
             <Route path="/datafetching" element={<DataFetching />} />
             <Route path="/hocapp" element={<HOCApp />} />
             <Route path="/eventbubblingapp" element={<EventApp />} />
+            <Route path="/fileuploadapp" element={<FileUploadApp />} />
 
+         
           
           </Routes>
        

@@ -47,6 +47,12 @@ const MainHeader = () => {
               Event App
             </NavLink>
           </li>
+          <li>
+            <NavLink activeClassName={classes.active} to="/fileuploadapp">
+              File Upload 
+            </NavLink>
+          </li>
+          
 
           <li>
             <NavLink activeClassName={classes.active} to="/test">
