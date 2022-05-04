@@ -1,32 +1,33 @@
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
-import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
-import { useState } from "react";
-import Welcome from "./Welcome";
-import { useNavigate } from "react-router-dom";
-import Modal from "@mui/material/Modal";
 
-import * as React from "react";
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import { useState } from 'react';
+import Welcome from './Welcome';
+import { useNavigate } from 'react-router-dom';
+import Modal from '@mui/material/Modal';
+
+import * as React from 'react';
 
 function Login() {
-  const initialValues = { username: "", pwd: "" };
+  const initialValues = { username: '', pwd: '' };
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
 
   let navigate = useNavigate();
 
   const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    p: 4
   };
 
   const [open, setOpen] = React.useState(false);
@@ -50,13 +51,13 @@ function Login() {
     const errors = {};
     errors.isError = false;
     if (!values.username) {
-      errors.username = "Username is required";
+      errors.username = 'Username is required';
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
     }
     if (!values.pwd) {
-      errors.pwd = "Password is required";
+      errors.pwd = 'Password is required';
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
@@ -66,33 +67,31 @@ function Login() {
   };
 
   const formAuthentication = (values) => {
-    let data = JSON.parse(localStorage.getItem("all_users1"));
+    let data = JSON.parse(localStorage.getItem('all_users1'));
     const errors = {};
 
-    
-
     const curr_data = data.find(({ username }) => username === values.username);
-console.log("Curr data",values.pwd);
-console.log("Curr data",curr_data);
+    console.log('Curr data', values.pwd);
+    console.log('Curr data', curr_data);
 
     if (!curr_data) {
-      errors.username = "Username Not Registered";
+      errors.username = 'Username Not Registered';
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
     } else if (values.pwd === curr_data.pwd) {
-    console.log("password correcr");
+      console.log('password correcr');
 
-      navigate("/welcome", { state: { name: values.username } });
+      navigate('/welcome', { state: { name: values.username } });
       <Welcome />;
     } else {
-      errors.pwd = "Invalid Password Try correct password";
+      errors.pwd = 'Invalid Password Try correct password';
       errors.isError = true;
       errors.isPopup = true;
       handleOpen();
     }
 
-    localStorage.setItem("all_users1", JSON.stringify(data));
+    localStorage.setItem('all_users1', JSON.stringify(data));
     return errors;
   };
 
@@ -101,43 +100,36 @@ console.log("Curr data",curr_data);
       <div
         className="App"
         style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center'
+        }}>
         <Card
           variant="outlined"
           maxWidth="sm"
           sx={{
             p: 5,
-            bgcolor: "info.main",
-            display: "flex",
+            bgcolor: 'info.main',
+            display: 'flex',
             boxShadow: 24,
-            flexWrap: "wrap",
-            justifyContent: "center",
+            flexWrap: 'wrap',
+            justifyContent: 'center',
             maxWidth: 250,
             borderRadius: 5,
 
-            m: 1,
-          }}
-        >
-          <Box component="span" sx={{ p: 0, bgcolor: "info.main" }}>
+            m: 1
+          }}>
+          <Box component="span" sx={{ p: 0, bgcolor: 'info.main' }}>
             <Box
               sx={{
-                display: "flex",
-                justifyContent: "center",
+                display: 'flex',
+                justifyContent: 'center',
                 p: 1,
                 m: 1,
 
-                borderRadius: 1,
-              }}
-            >
-              <Typography
-                variant="h5"
-                component="legend"
-                sx={{ color: "white" }}
-              >
+                borderRadius: 1
+              }}>
+              <Typography variant="h5" component="legend" sx={{ color: 'white' }}>
                 Login Form
               </Typography>
             </Box>
@@ -145,7 +137,7 @@ console.log("Curr data",curr_data);
               sx={{
                 borderRadius: 1,
                 boxShadow: 14,
-                bgcolor: "white",
+                bgcolor: 'white'
               }}
               id="outlined-basic"
               label="UserName"
@@ -159,11 +151,11 @@ console.log("Curr data",curr_data);
 
             <TextField
               sx={{
-                bgcolor: "white",
+                bgcolor: 'white',
                 boxShadow: 14,
                 borderRadius: 1,
 
-                color: "text.primary",
+                color: 'text.primary'
               }}
               name="pwd"
               fullWidth
@@ -179,24 +171,22 @@ console.log("Curr data",curr_data);
 
             <Box
               sx={{
-                display: "flex",
-                justifyContent: "center",
+                display: 'flex',
+                justifyContent: 'center',
                 p: 1,
                 m: 1,
 
-                borderRadius: 1,
-              }}
-            >
+                borderRadius: 1
+              }}>
               <Button
                 variant="contained"
                 margin="dense"
                 type="submit"
                 sx={{
                   boxShadow: 20,
-                  justifyContent: "center",
-                  bgcolor: "success.main",
-                }}
-              >
+                  justifyContent: 'center',
+                  bgcolor: 'success.main'
+                }}>
                 Login
               </Button>
             </Box>
@@ -209,11 +199,10 @@ console.log("Curr data",curr_data);
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
-          >
+            aria-describedby="modal-modal-description">
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                Please check on below{" "}
+                Please check on below{' '}
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2, ml: 5 }}>
                 {formErrors.username}
@@ -224,7 +213,7 @@ console.log("Curr data",curr_data);
           </Modal>
         </div>
       ) : (
-        " "
+        ' '
       )}
     </form>
   );
